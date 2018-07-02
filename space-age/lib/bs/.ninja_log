@@ -1,0 +1,22 @@
+# ninja log v5
+1	25	1530546059	Leap.cmi	5aab84e321f02cc4
+0	73	1530546059	__tests__/SpaceAge_test.mlast	75b54d68426368aa
+1	74	1530546059	src/SpaceAge.mliast	2b872bb5fdb71657
+73	84	1530546059	__tests__/SpaceAge_test.mlast.d	9a0d17764ee2c976
+74	85	1530546059	src/SpaceAge.mliast.d	6c7c82dc2c61d44
+1	21	1530546059	src/SpaceAge-Leap.cmi	a34909294f00a564
+2	44	1530546266	Leap.cmi	5aab84e321f02cc4
+1	69	1530546266	src/SpaceAge.mlast	111b538835a8e7d0
+70	85	1530546266	src/SpaceAge.mlast.d	e4ca52474891e9c9
+0	100	1530546844	src/SpaceAge.mlast	111b538835a8e7d0
+100	114	1530546844	src/SpaceAge.mlast.d	e4ca52474891e9c9
+0	76	1530546895	src/SpaceAge.mlast	111b538835a8e7d0
+76	91	1530546895	src/SpaceAge.mlast.d	e4ca52474891e9c9
+2	34	1530546896	src/SpaceAge-Leap.cmj	8f2b3f2bc16e730f
+2	34	1530546896	/Users/prisc_000/exercism/reasonml/space-age/src/SpaceAge.bs.js	8f2b3f2bc16e730f
+1	35	1530546896	__tests__/SpaceAge_test-Leap.cmj	9a31cf1934c7c1d
+1	35	1530546896	/Users/prisc_000/exercism/reasonml/space-age/__tests__/SpaceAge_test.bs.js	9a31cf1934c7c1d
+1	35	1530546896	__tests__/SpaceAge_test-Leap.cmi	9a31cf1934c7c1d
+2	44	1530547170	Leap.cmi	5aab84e321f02cc4
+0	81	1530547170	src/SpaceAge.mlast	111b538835a8e7d0
+81	97	1530547170	src/SpaceAge.mlast.d	e4ca52474891e9c9

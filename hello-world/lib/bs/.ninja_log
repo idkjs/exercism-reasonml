@@ -1,0 +1,16 @@
+# ninja log v5
+4	35	1530543151	HelloWorld.cmi	b9b040e5b32207e3
+0	109	1530543151	__tests__/HelloWorld_test.mlast	55359b200e2194dc
+1	111	1530543151	src/HelloWorld.mliast	a9d4dc404672d4b3
+2	112	1530543151	src/HelloWorld.mlast	64b6b15d954ec242
+110	123	1530543151	__tests__/HelloWorld_test.mlast.d	7c7507ed9c38852f
+111	125	1530543151	src/HelloWorld.mliast.d	e89c5d4d9bbc52aa
+112	127	1530543151	src/HelloWorld.mlast.d	9eee785c91d71f45
+1	16	1530543151	src/HelloWorld-HelloWorld.cmi	ee395435b2113cbb
+0	57	1530543222	src/HelloWorld.mlast	64b6b15d954ec242
+57	69	1530543222	src/HelloWorld.mlast.d	9eee785c91d71f45
+1	23	1530543222	src/HelloWorld-HelloWorld.cmj	fb05f9dcff26a115
+1	23	1530543222	/Users/prisc_000/exercism/reasonml/hello-world/src/HelloWorld.bs.js	fb05f9dcff26a115
+23	56	1530543222	__tests__/HelloWorld_test-HelloWorld.cmj	247c03b6a20a0d9b
+23	56	1530543222	/Users/prisc_000/exercism/reasonml/hello-world/__tests__/HelloWorld_test.bs.js	247c03b6a20a0d9b
+23	56	1530543222	__tests__/HelloWorld_test-HelloWorld.cmi	247c03b6a20a0d9b

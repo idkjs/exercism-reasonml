@@ -1,0 +1,60 @@
+bs_package_flags = -bs-package-map leap
+src_root_dir = /Users/prisc_000/exercism/reasonml/space-age
+bsc = /Users/prisc_000/exercism/reasonml/space-age/node_modules/bs-platform/lib/bsc.exe
+bsdep = /Users/prisc_000/exercism/reasonml/space-age/node_modules/bs-platform/lib/bsb_helper.exe
+warnings = -w -30-40+6+7+27+32..39+44+45+101 -warn-error +101
+bsc_flags = -bs-suffix -nostdlib -I '/Users/prisc_000/exercism/reasonml/space-age/node_modules/bs-platform/lib/ocaml' -no-alias-deps -color always
+ppx_flags = 
+bs_package_includes = 
+bs_package_dev_includes = -I /Users/prisc_000/exercism/reasonml/space-age/node_modules/@glennsl/bs-jest/lib/ocaml
+namespace = -ns Leap
+bsb_dir_group = 0
+bsc_group_1_includes = -I __tests__
+refmt = /Users/prisc_000/exercism/reasonml/space-age/node_modules/bs-platform/lib/refmt.exe
+reason_react_jsx = 
+refmt_flags = --print binary
+bsc_lib_includes = -I . -I src
+rule build_ast_and_module_sets_from_re
+  command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${warnings} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build __tests__/SpaceAge_test.mlast : build_ast_and_module_sets_from_re $src_root_dir/__tests__/SpaceAge_test.re
+rule build_deps
+  command = ${bsdep} ${namespace} -g ${bsb_dir_group} -MD ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build __tests__/SpaceAge_test.mlast.d : build_deps __tests__/SpaceAge_test.mlast
+  bsb_dir_group = 1
+rule build_cmj_cmi
+  command = ${bsc} ${bs_package_flags} -bs-assume-no-mli -bs-no-builtin-ppx-ml -bs-no-implicit-include ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${warnings} ${bsc_flags} -o ${out} -c  ${in} $postbuild
+  depfile = ${in}.d
+  description = [34mBuilding[39m [2m${out}[22m
+build __tests__/SpaceAge_test-Leap.cmj |  $src_root_dir/__tests__/SpaceAge_test.bs.js __tests__/SpaceAge_test-Leap.cmi : build_cmj_cmi __tests__/SpaceAge_test.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:__tests__
+  bs_package_includes = $bs_package_includes $bs_package_dev_includes
+  bsc_extra_includes = $bsc_group_1_includes
+rule build_ast_and_module_sets_from_rei
+  command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx} ${ppx_flags} ${warnings} ${bsc_flags}  -c -o ${out} -bs-syntax-only -bs-binary-ast -intf ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build src/SpaceAge.mliast : build_ast_and_module_sets_from_rei $src_root_dir/src/SpaceAge.rei
+build src/SpaceAge.mliast.d : build_deps src/SpaceAge.mliast
+rule build_cmi
+  command = ${bsc} ${bs_package_flags} -bs-no-builtin-ppx-mli -bs-no-implicit-include ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${warnings} ${bsc_flags} -o ${out} -c  ${in}
+  depfile = ${in}.d
+  description = [34mBuilding[39m [2m${out}[22m
+build src/SpaceAge-Leap.cmi : build_cmi src/SpaceAge.mliast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src
+build src/SpaceAge.mlast : build_ast_and_module_sets_from_re $src_root_dir/src/SpaceAge.re
+build src/SpaceAge.mlast.d : build_deps src/SpaceAge.mlast
+rule build_cmj_only
+  command = ${bsc} ${bs_package_flags} -bs-assume-has-mli -bs-no-builtin-ppx-ml -bs-no-implicit-include  ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${warnings} ${bsc_flags} -o ${out} -c  ${in} $postbuild
+  depfile = ${in}.d
+  description = [34mBuilding[39m [2m${out}[22m
+build src/SpaceAge-Leap.cmj |  $src_root_dir/src/SpaceAge.bs.js : build_cmj_only src/SpaceAge.mlast |  src/SpaceAge-Leap.cmi
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src
+rule build_package
+  command = ${bsc} -w -49 -no-alias-deps -c ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build Leap.cmi : build_package Leap.mlmap
+build build.ninja : phony  ||  Leap.cmi src/SpaceAge.mlast.d src/SpaceAge.mliast.d __tests__/SpaceAge_test.mlast.d
